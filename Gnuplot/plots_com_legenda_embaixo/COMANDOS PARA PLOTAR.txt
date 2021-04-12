@@ -1,0 +1,108 @@
+Plot gnu teste
+
+cd 'C:\Users\Usuario\Documents\Mestrado - Sistemas\Sistemas aprovados\Gnuplot\plots_com_legenda_embaixo'
+set terminal postscript portrait enhanced 22 color linewidth 2
+set output "1024_alpha2mu1_port.eps"
+set format x "% h" 
+set format y "10^{%T}" 
+set xlabel "E_b/N_0 (dB)" 
+set ylabel "Taxa de erro de bit"
+set logscale y
+set size 1.6,0.7
+set size ratio 0.7
+set grid
+set key at 6, 0.0005
+plot  '1024_alpha2mu1_corre.txt' w linesp  t "correlação" lw 1,'1024_alpha2mu1_corre_entre.txt' w linesp  t "correlação e entrelaçamento" lw 1,'1024_alpha2mu1_puro.txt' w linesp  t "puro" lw 1
+replot
+-----------------------------------------------------------------------------------
+plot "1024_alpha2mu1_corre.txt" title 'correlated' with linespoints pt 1 ps 2 lw 2 , "1024_alpha2mu1_corre_entre.txt" title 'correlated
+ and random interleaver' with linespoints pt 5 ps 2 lw 2 , "1024_alpha2mu1_puro.txt" title 'uncorrelated without interleaver' with linespoints p
+t 10 ps 2 lw 2
+
+save('1024_alpha2mu2_corre_entre.txt', 'output', '-ASCII','-append');
+
+pause -1
+
+set yrange [ 5e-04 : 10.00000 ]
+
+----------------------------------------------------------------------------------
+
+cd 'C:\Users\Usuario\Documents\Mestrado - Sistemas\Sistemas aprovados\Gnuplot\plots_com_legenda_embaixo'
+set terminal postscript portrait enhanced 22 color linewidth 2
+set format x "% h" 
+set format y "10^{%T}" 
+set xlabel "E_b/N_0 (dB)" 
+set ylabel "Taxa de erro de bit"
+set logscale y 
+set grid
+set size 1.6,0.7
+set size ratio 0.7
+set key at 2.1, 0.004
+set output "1024_alphamu_entre_port.eps"
+plot '1024_alpha2mu1_corre_entre.txt' w linesp  t '{/Symbol m} = 1' lw 1,'1024_alpha2mu2_corre_entre.txt' w linesp  t '{/Symbol m} = 2' lw 1,'1024_alpha2mu4_corre_entre.txt' w linesp  t '{/Symbol m} = 4' lw 1
+
+
+----------------------------------------------------------------------------------
+
+cd 'C:\Users\Usuario\Documents\Mestrado - Sistemas\Sistemas aprovados\Gnuplot\plots_com_legenda_embaixo'
+set terminal postscript portrait enhanced 22 color linewidth 2
+set format x "% h" 
+set format y "10^{%T}" 
+set xlabel "E_b/N_0 (dB)"
+set ylabel "Taxa de erro de bit"
+set logscale y 
+set grid
+set size 1.6,0.7
+set size ratio 0.7
+set key at 2.3, 0.004
+set output "1024_alphamu_corre_port.eps"
+plot '1024_alpha2mu1_corre.txt' w linesp  t '{/Symbol m} = 1' lw 1,'1024_alpha2mu2_corre.txt' w linesp  t '{/Symbol m} = 2' lw 1,'1024_alpha2mu4_corre.txt' w linesp  t '{/Symbol m} = 4' lw 1
+
+
+-----------------------------------------------------------------------------------
+
+cd 'C:\Users\Usuario\Documents\Mestrado - Sistemas\Sistemas aprovados\Gnuplot\plots_com_legenda_embaixo'
+set terminal postscript portrait enhanced 22 color linewidth 2
+set format x "% h" 
+set format y "10^{%T}" 
+set xlabel "E_b/N_0 (dB)" 
+set ylabel "Taxa de erro de bit"
+set logscale y
+set grid
+set size 1.6,0.7
+set size ratio 0.7
+set output "1024_etamu_port.eps"
+set key at 5.3, 0.0005
+plot '1024_etamu_corre.txt' w linesp  t 'correlação' lw 1,'1024_etamu_corre_entre.txt' w linesp  t 'correlação e entrelaçamento' lw 1,'1024_etamu_puro.txt' w linesp  t 'puro' lw 1
+
+
+----------------------------------------------------------------------------------
+
+cd 'C:\Users\Usuario\Documents\Mestrado - Sistemas\Sistemas aprovados\Gnuplot\plots_com_legenda_embaixo'
+set terminal postscript portrait enhanced 22 color linewidth 2
+set format x "% h" 
+set format y "10^{%T}" 
+set xlabel "E_b/N_0 (dB)"
+set ylabel "Taxa de erro de bit"
+set logscale y
+set grid
+set size 1.6,0.7
+set size ratio 0.7
+set output "1024_kappamu_port.eps"
+set key at 3.3, 0.0005
+plot '1024_kappamu_corre.txt' w linesp  t 'correlação' lw 1,'1024_kappamu_corre_entre.txt' w linesp  t 'correlação e entrelaçamento' lw 1,'1024_kappamu_puro.txt' w linesp  t 'puro' lw 1
+
+------------------------------------------------------------------------------------
+cd 'C:\Users\Usuario\Documents\Mestrado - Sistemas\Sistemas aprovados\Gnuplot\arquivosgnuplot'
+set terminal postscript portrait enhanced 22 color linewidth 2
+set format x "% h" 
+set format y "10^{%T}" 
+set xlabel "E_b/N_o (dB)" 
+set ylabel "Taxa de Erro de Bit" 
+set grid
+set yrange [ 1e-05 : 1.00000 ] 
+set xrange [ 0 : 15]
+set logscale y
+set output "encom2019.eps"
+plot 'ray_n128k64.dat' w linesp  t "N=128 (Rayleigh)",'ray_n256k128.dat' w linesp  t "N=256 (Rayleigh)",'ray_n512k256.dat' w linesp  t "N=512 (Rayleigh)",'ray_n1024k512.dat' w linesp  t "N=1024 (Rayleigh)",'ray_n2048k1024.dat' w linesp  t "N=2048 (Rayleigh)",'n128k64.dat' w linesp  t "N=128 (AWGN)",'n256k128.dat' w linesp  t "N=256 (AWGN)",'n512k256.dat' w linesp  t "N=512 (AWGN)",'n1024k512.dat' w linesp  t "N=1024 (AWGN)",'n2048k1024.dat' w linesp  t "N=2048 (AWGN)"
+

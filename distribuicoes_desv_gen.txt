@@ -1,0 +1,68 @@
+Desvanecimento generalizado - distribuiÃ§Ãµes
+
+alpha_mu
+
+mu = 1 -> Weibull
+mu = 1, alpha = 2 -> Rayleigh
+mu = 1, alpha = 1 -> Exponencial negativa
+mu = 1/2, alpha = 2 -> One-sided Gaussian
+
+kappa_mu
+
+k = 0, mu = 0.5 -> Nakagami-m (m = 0.5)
+k = 1, mu = 1 -> Rice
+k = 0, mu = 1 -> Rayleigh
+
+eta_mu
+
+eta = 1, mu = 0.5 -> Rayleigh
+eta = 0 mu = m -> Nakagami-m
+
+15 SMITH, J. I. A computer generated multipath fading simulation for mobile radio.
+IEEE Transactions on Vehicular Technology, v. 24, n. 3, p. 39–40, Aug 1975. ISSN
+0018-9545. Citado 2 vezes nas páginas 18 e 34.
+
+
+
+filtro doppler 
+
+fd = 1/(2*pi); % Maximun Doppler shift [Hz], where Fd = ...velocity/wavelength
+fs = 30; % Sampling frequency [Hz]
+Ts = 1/fs; %sampling period
+T = 1/df;
+fdRatio = fd/fs; % Ratio between the sampling frequency and do ...Doppler shift [dimensionless]
+km = floor(fdRatio*N); % The sample in the frequency domain for ...the Doppler shift
+H = zeros(1,N); % Filter's frequency responde
+% Generate the filter H(k)
+for k = 1:N
+    if k == 1
+        H(k) = 0;
+    elseif k >= 2 && k <= km
+        H(k) = sqrt(1./(2*sqrt(1-((k-1)/(N*fdRatio)).^2)));
+    elseif k == km+1
+        H(k) = sqrt((km/2)*((pi/2)-atan((km-1)/sqrt(2*km-1))));
+    elseif k >= km+2 && k <= N-km
+        H(k) = 0;
+    elseif k == N-km+1
+        H(k) = sqrt((km/2)*((pi/2)-atan((km-1)/sqrt(2*km-1))));
+    else
+        H(k) = sqrt(1./(2*sqrt(1-((N-(k-1))/(N*fdRatio)).^2)));
+    end
+end
+plot(H);
+
+
+
+
+%% Gerar filtro doppler
+%jakes
+fm=10;                             %Doppler frequency
+df=(2*fm)/(N-1);                    %Frequency seperation
+fs=30;                           %Sampling frequency
+M=(fs/df)+1;                        %Number of points in the frequency domain
+T=1/df;                             %Total duration of the fading sequence
+Ts=1/fs;                            %Sampling time
+f=-fm:df:fm;                        %Frequency vector
+H=1.5./(pi*fm*sqrt(1-(f/fm).^2));   %Doppler spectrum
+H(1)=2*H(2)-H(3);                   %Defining the end points
+H(end)=2*H(end-1)-H(end-2);         %Defining the end points

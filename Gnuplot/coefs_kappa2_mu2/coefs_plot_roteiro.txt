@@ -1,0 +1,11 @@
+cd 'C:\Users\Usuario\Documents\Mestrado - Sistemas\Sistemas aprovados\Gnuplot\coefs_kappa2_mu2'
+set terminal postscript portrait enhanced 22 color linewidth 2
+set output "5hz_port.eps"
+set ylabel "Coeficientes" 
+set xlabel "Amostras"
+set size 1.6,0.7
+set size ratio 0.7
+set xrange [ 0 : 1024 ]
+set grid
+plot 'kappa_mu_fd5.txt' title 'f_{m} = 5 Hz' with lines linestyle 1 linecolor rgb "blue"
+

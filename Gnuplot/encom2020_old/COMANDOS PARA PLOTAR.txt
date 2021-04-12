@@ -1,0 +1,49 @@
+Plot gnu teste
+
+cd 'C:\Users\Usuario\Documents\Mestrado - Sistemas\Sistemas aprovados\Gnuplot\encom2020'
+set terminal postscript portrait enhanced 22 color linewidth 2
+set format x "% h" 
+set format y "10^{%T}" 
+set xlabel "E_b/N_0 (dB)"
+set ylabel "BER"
+set logscale y 
+set grid
+set size 1.6,0.7
+set size ratio 0.7
+set key at 5, 0.0005
+set output "512_etamu.eps"
+plot 'eta1mu0_5_corre.txt' w linesp  t 'correlação' lw 1,'eta1mu0_5_corre_entre.txt' w linesp  t 'correlação c/ entrelaçador' lw 1,'eta1mu0_5puro.txt' w linesp  t 'puro' lw 1
+
+
+-----------------------------------------------------------------------------------
+
+cd 'C:\Users\Usuario\Documents\Mestrado - Sistemas\Sistemas aprovados\Gnuplot\encom2020'
+set terminal postscript portrait enhanced 22 color linewidth 2
+set format x "% h" 
+set format y "10^{%T}" 
+set xlabel "E_b/N_0 (dB)" 
+set ylabel "Bit Error Rate"
+set logscale y
+set grid
+set size 1.6,0.7
+set size ratio 0.7
+set output "512_alphamu.eps"
+set key at 5.7, 0.0005
+plot '512alpha2mu1_corre.txt' w linesp  t 'correlação' lw 1,'512alpha2mu1_corre_entre.txt' w linesp  t 'correlação c/ entrelaçador' lw 1,'512_alpha2mu1_puro.txt' w linesp  t 'puro' lw 1
+
+
+----------------------------------------------------------------------------------
+
+cd 'C:\Users\Usuario\Documents\Mestrado - Sistemas\Sistemas aprovados\Gnuplot\encom2020'
+set terminal postscript portrait enhanced 22 color linewidth 2
+set format x "% h" 
+set format y "10^{%T}" 
+set xlabel "E_b/N_0 (dB)"
+set ylabel "Bit Error Rate"
+set logscale y
+set grid
+set size 1.6,0.7
+set size ratio 0.7
+set output "512_kappamu.eps"
+set key at 3.6, 0.0005
+plot 'kappa2mu2_corre.txt' w linesp  t 'correlação' lw 1,'kappa2mu2_corre_entre.txt' w linesp  t 'correlação c/ entrelaçador' lw 1,'kappa2mu2_puro.txt' w linesp  t 'puro' lw 1

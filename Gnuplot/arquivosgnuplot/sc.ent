@@ -1,0 +1,12 @@
+2048 1024 0 4 .25 0 500 2000 10000 n2048k1024
+
+Code dimension (N)? 2048
+Number of information bits (K)? 1024
+Minimum Eb/No (EbNo_min)? 1
+Maximum Eb/No (EbNo_max)? 4
+Increment Eb/No (EbNo_step)? .25
+AWGN (0) or Rayleigh (1)? 0
+Number of errors for calculation of BER (MaxErrors)? 500
+Number (minimum) of simulations (nsim_min)? 2000
+Number (maximum) of simulations (nsim_max)? 10000
+Filename for data recording? n2048k1024.dat

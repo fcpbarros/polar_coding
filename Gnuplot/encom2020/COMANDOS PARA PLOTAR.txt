@@ -1,0 +1,15 @@
+Plot gnu teste
+
+cd 'C:\Users\Usuario\Documents\Mestrado - Sistemas\Sistemas aprovados\Gnuplot\encom2020'
+set terminal postscript portrait enhanced 22 color linewidth 2
+set format x "% h" 
+set format y "10^{%T}" 
+set xlabel "E_b/N_0 (dB)"
+set ylabel "BER"
+set logscale y 
+set grid
+set size 1.6,0.7
+set size ratio 0.7
+set key at 3, 0.0008
+set output "plot_encom2020.eps"
+plot 'polar_alpha1mu1.txt' w linesp  t '{/Symbol a} = 1, {/Symbol m} = 1' lw 1, 'polar_alpha2mu1.txt' w linesp  t '{/Symbol a} = 2, {/Symbol m} = 1' lw 1,'polar_alpha2mu2.txt' w linesp  t '{/Symbol a} = 2, {/Symbol m} = 2' lw 1,'polar_awgn.txt' w linesp  t 'AWGN' lw 1
